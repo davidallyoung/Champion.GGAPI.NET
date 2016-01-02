@@ -59,9 +59,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Champion.GGAPI\Champion.GGAPI.NET.csproj">
+    <ProjectReference Include="..\Champion.GGAPI\Champion.GGAPI.csproj">
       <Project>{5b684531-4417-4198-9e01-d186a2083f9e}</Project>
-      <Name>Champion.GGAPI.NET</Name>
+      <Name>Champion.GGAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

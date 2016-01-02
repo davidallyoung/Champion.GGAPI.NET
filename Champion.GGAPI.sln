@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Champion.GGAPI.NET", "Champion.GGAPI\Champion.GGAPI.NET.csproj", "{5B684531-4417-4198-9E01-D186A2083F9E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Champion.GGAPI", "Champion.GGAPI\Champion.GGAPI.csproj", "{5B684531-4417-4198-9E01-D186A2083F9E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Champion.GGAPI.Tests", "Champion.GGAPI.Tests\Champion.GGAPI.Tests.csproj", "{615A7C18-B723-4061-B1CB-C703ABBE0AEB}"
 EndProject
