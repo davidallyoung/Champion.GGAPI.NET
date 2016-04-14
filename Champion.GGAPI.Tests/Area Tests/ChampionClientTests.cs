@@ -25,8 +25,6 @@ namespace Champion.GGAPI.Tests.Area_Tests
         {
             var client = new ChampionClient("ad;slfkjasdfko;jasd;klfj");
             var champions = await client.GetAllChampionsAsync().ConfigureAwait(false);
-
-            Assert.IsNull(champions);
         }
     }
 }

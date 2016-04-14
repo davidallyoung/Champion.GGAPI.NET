@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -26,24 +27,18 @@ namespace Champion.GGAPI.Exception
         public static ChampionGgApiException CreateForErrorCode(int code)
         {
             var errorCode = (ChampionGgApiErrorCode) code;
-            var msg = code.ToString();
+            var msg = $"{(int)code}: {code}";
             return new ChampionGgApiException(msg) {Code = errorCode};
         }
+    }
 
-        private static string GetMessageForErrorCode(ChampionGgApiErrorCode code)
-        {
-            //TODO: implement messages for specific error codes
-            return string.Empty;
-        }
-
-        public enum ChampionGgApiErrorCode
-        {
-            BadRequest = 400,
-            Forbidden = 403,
-            DataNotFound = 404,
-            ServerError = 500,
-            Unavailable = 503,
-            JsonSerializationError = 0
-        }
+    public enum ChampionGgApiErrorCode
+    {
+        JsonSerializationError = 0,
+        BadRequest = 400,
+        Forbidden = 403,
+        DataNotFound = 404,
+        ServerError = 500,
+        Unavailable = 503
     }
 }
