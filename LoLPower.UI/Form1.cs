@@ -6,9 +6,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Management;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LoLPower.Core;
 using LoLPower.Core.GameMonitor;
 using LoLPower.Core.Riot;
 
@@ -16,39 +16,59 @@ namespace LoLPower.UI
 {
     public partial class Form1 : Form
     {
-        private GameMonitorWmiManager _gameMonitor;
-        private RiotClient _riotClient;
+        private readonly GameMonitorWmiManager _gameMonitor;
+        private readonly RiotClient _riotClient;
+        private const string SummonerName = "freakpeach";
+        private readonly Progress<IProgressUpdate> _progressUpdater; 
         public Form1()
         {
             InitializeComponent();
-            _riotClient = new RiotClient(ConfigurationManager.AppSettings["riotGamesApiKey"]);
+            _progressUpdater = new Progress<IProgressUpdate>(StatusUpdate);
+            _riotClient = new RiotClient(ConfigurationManager.AppSettings["riotGamesApiKey"], _progressUpdater);
             _gameMonitor = GameMonitorWmiManager.Instance("League Of Legends.exe");
 
             _gameMonitor.Started += gameMonitor_GameStart;
             _gameMonitor.Ended += gameMonitor_GameEnd;
         }
 
-        private void gameMonitor_GameStart(object sender, EventArrivedEventArgs args)
+        private async void gameMonitor_GameStart(object sender, EventArrivedEventArgs args)
         {
-            lblStatusMessage.Text = $"Started...";
+            StatusUpdate(new ProgressUpdateDefault("Game Start Detected..."));
+            await LoadGridWithCurrentGameData();
         }
 
         private void gameMonitor_GameEnd(object sender, EventArrivedEventArgs args)
         {
-            lblStatusMessage.Text = $"Ended...";
+            StatusUpdate(new ProgressUpdateDefault("Game End Detected..."));
         }
 
         private async void btntest_Click(object sender, EventArgs e)
         {
+            await LoadGridWithCurrentGameData();
+        }
+
+        private async Task LoadGridWithCurrentGameData()
+        {
             try
             {
                 var test = await _riotClient.GetCurrentlyPlayedGameForSummonerAsync("freakpeach");
-                var x = test;
+                dgvCurrentPlayerIno.DataSource = test;
             }
             catch (Exception)
             {
+                lblStatusMessage.Text = $"No current game information found for {SummonerName}";
                 return;
             }
+        }
+
+        private void StatusUpdate(IProgressUpdate progressUpdate)
+        {
+            lblStatusMessage.Text = progressUpdate.Message;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _gameMonitor.Dispose();
         }
     }
 }

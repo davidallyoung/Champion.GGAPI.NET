@@ -12,17 +12,20 @@ namespace LoLPower.Core.Riot
 {
     public class RiotClient
     {
-        private RiotApi _api;
-        public RiotClient(string apiKey)
+        private readonly RiotApi _api;
+        private readonly IProgress<IProgressUpdate> _progressUpdater;
+        public RiotClient(string apiKey, IProgress<IProgressUpdate> progressUpdater)
         {
-           _api = RiotApi.GetInstance(apiKey);
+            _api = RiotApi.GetInstance(apiKey);
+            _progressUpdater = progressUpdater;
         }
 
         public async Task<CurrentGame> GetCurrentlyPlayedGameForSummonerAsync(string summonerName)
         {
-            var summoner = await _api.GetSummonerAsync(Region.na, summonerName);
-            var currGame = await _api.GetCurrentGameAsync(Platform.NA1, summoner.Id);
-            var champions = await _api.GetChampionsAsync(Region.na);
+            _progressUpdater.Report(new ProgressUpdateDefault("Retrieving Summonr Information..."));
+            var summoner = await _api.GetSummonerAsync(Region.na, summonerName).ConfigureAwait(false);
+            _progressUpdater.Report(new ProgressUpdateDefault("Retrieving current game information..."));
+            var currGame = await _api.GetCurrentGameAsync(Platform.NA1, summoner.Id).ConfigureAwait(false);
 
             return currGame;
         }
