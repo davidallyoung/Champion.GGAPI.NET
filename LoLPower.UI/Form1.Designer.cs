@@ -32,7 +32,9 @@
             this.lblStatusMessage = new System.Windows.Forms.Label();
             this.btntest = new System.Windows.Forms.Button();
             this.dgvCurrentPlayerIno = new System.Windows.Forms.DataGridView();
+            this.dgvCurrentParticipants = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentPlayerIno)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentParticipants)).BeginInit();
             this.SuspendLayout();
             // 
             // lblStatus
@@ -67,14 +69,26 @@
             this.dgvCurrentPlayerIno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCurrentPlayerIno.Location = new System.Drawing.Point(12, 29);
             this.dgvCurrentPlayerIno.Name = "dgvCurrentPlayerIno";
-            this.dgvCurrentPlayerIno.Size = new System.Drawing.Size(656, 304);
+            this.dgvCurrentPlayerIno.Size = new System.Drawing.Size(235, 116);
             this.dgvCurrentPlayerIno.TabIndex = 3;
+            // 
+            // dgvCurrentParticipants
+            // 
+            this.dgvCurrentParticipants.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvCurrentParticipants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCurrentParticipants.Location = new System.Drawing.Point(254, 29);
+            this.dgvCurrentParticipants.Name = "dgvCurrentParticipants";
+            this.dgvCurrentParticipants.Size = new System.Drawing.Size(414, 312);
+            this.dgvCurrentParticipants.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 387);
+            this.Controls.Add(this.dgvCurrentParticipants);
             this.Controls.Add(this.dgvCurrentPlayerIno);
             this.Controls.Add(this.btntest);
             this.Controls.Add(this.lblStatusMessage);
@@ -83,6 +97,7 @@
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentPlayerIno)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentParticipants)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,6 +109,7 @@
         private System.Windows.Forms.Label lblStatusMessage;
         private System.Windows.Forms.Button btntest;
         private System.Windows.Forms.DataGridView dgvCurrentPlayerIno;
+        private System.Windows.Forms.DataGridView dgvCurrentParticipants;
     }
 }
 

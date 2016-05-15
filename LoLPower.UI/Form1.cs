@@ -52,7 +52,7 @@ namespace LoLPower.UI
             try
             {
                 var test = await _riotClient.GetCurrentlyPlayedGameForSummonerAsync("freakpeach");
-                dgvCurrentPlayerIno.DataSource = test;
+                dgvCurrentPlayerIno.DataSource = test.Participants;
             }
             catch (Exception)
             {
