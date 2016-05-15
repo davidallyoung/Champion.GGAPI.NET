@@ -8,5 +8,5 @@ namespace LoLPower.Core
 {
     public class Class1
     {
-    }
+    }`
 }
