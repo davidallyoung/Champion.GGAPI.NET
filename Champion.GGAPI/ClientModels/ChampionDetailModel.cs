@@ -236,7 +236,7 @@ namespace Champion.GGAPI.ClientModels
             public int games { get; set; }
         }
 
-        public class HighestWinPercent5
+        public class HighestWinPercentSkills
         {
             public List<string> order { get; set; }
             public double winPercent { get; set; }
