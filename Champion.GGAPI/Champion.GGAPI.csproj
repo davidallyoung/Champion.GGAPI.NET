@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Areas\ChampionClient.cs" />
     <Compile Include="ClientModels\AllChampionsModel.cs" />
+    <Compile Include="ClientModels\ChampionDetailModel.cs" />
     <Compile Include="ClientModels\RoleModel.cs" />
     <Compile Include="Exception\ChampionGGApiException.cs" />
     <Compile Include="RestClient.cs" />

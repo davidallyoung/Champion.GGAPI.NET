@@ -22,5 +22,13 @@ namespace Champion.GGAPI.Areas
             var champions = await ChampionGgCallerHttpClient.CallChampionGgApiAsync<List<AllChampionsModel>>(apiCall).ConfigureAwait(false);
             return champions;
         } 
+
+        public async Task<List<ChampionDetailModel>> GetChampionDetails(string championName)
+        {
+            var apiCall = $"champion/{championName}?api_key={_apiKey}";
+            var championDetails = await ChampionGgCallerHttpClient.CallChampionGgApiAsync<List<ChampionDetailModel>>(apiCall).ConfigureAwait(false);
+
+            return championDetails;
+        }
     }
 }
