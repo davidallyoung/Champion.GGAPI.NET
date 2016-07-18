@@ -10,6 +10,5 @@ namespace Champion.GGAPI.Tests
     public static class TestApiInfo
     {
         public static string ApiKey = ConfigurationManager.AppSettings["apiKey"];
-
     }
 }

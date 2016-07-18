@@ -247,7 +247,7 @@ namespace Champion.GGAPI.ClientModels
         {
             public List<SkillInfo> skillInfo { get; set; }
             public MostGames5 mostGames { get; set; }
-            public HighestWinPercent5 highestWinPercent { get; set; }
+            public HighestWinPercentSkills highestWinPercent { get; set; }
         }
 
         public class Datum
